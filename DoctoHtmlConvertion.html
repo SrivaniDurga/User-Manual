@@ -1,0 +1,410 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Headings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body,
+        html {
+            font-family: "Poppins", Arial, sans-serif;
+            height: 100%;
+            font-size: 14px;
+            font-weight: normal;
+            background-color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 10px;
+        }
+
+        .headings-container {
+            height: 100vh;
+            overflow-y: auto;
+            padding-right: 10px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            line-height: 1.5;
+            z-index: 2;
+            text-align: left;
+            margin-left: 16px;
+            padding-left: 13px;
+            padding-bottom: 25px;
+            display: flex;
+            width: 300px;
+            color: #333;
+            background-color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .headings-container .list-group-item {
+            background-color: inherit;
+            border: none;
+            color: inherit;
+        }
+
+        .content-container {
+            padding-left: 20px;
+            box-sizing: border-box;
+            width: 100%;
+            transition: background-color 0.3s, color 0.3s;
+            margin-left: 10px;
+        }
+
+        .dark-mode body,
+        .dark-mode html,
+        .dark-mode .headings-container,
+        .dark-mode .content-container,
+        .dark-mode .main {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .dark-mode .download-button,
+        .dark-mode .link {
+            filter: invert(1);
+        }
+
+        .dark-mode .bottom-card {
+            background-color: #333;
+        }
+        .sticky-heading h1, h2, h3, h4, h5, h6{
+            padding-left: 10px;
+        }
+
+
+        .sticky-heading {
+             position: sticky;
+             top: 0;
+             font-weight: bold;
+             font-size: 1.4rem;
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
+             box-shadow: 8px 4px 9px rgba(0, 0, 0, .2);
+            z-index: 1;
+            margin-bottom: 0.7rem;
+            background: #f7f7f7;
+            border-radius: 4px 4px 10px 10px;
+        }
+
+        #headingsContainer a {
+            border: none;
+        }
+
+        #headingsContainer a:hover {
+            color: #20419B !important;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #headingsContainer a.active {
+            background-color: #20419B !important;
+            font-weight: bold;
+            border-radius: 8px;
+            color: #ffffff !important;
+            height: 32px;
+            padding-left: 10px !important;
+        }
+
+        .review-button {
+            display: none;
+        }
+
+        .bottom-card {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 110%;
+            box-shadow: 0 9px 9px rgba(0, 0, 0, 0.8);
+            z-index: 1050;
+            text-align: center;
+            background: white;
+        }
+
+        .link {
+            font-weight: bold;
+        }
+        
+        
+
+        .toc-heading {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            padding-left: 0px;
+            margin-top: 22px;
+        }
+
+        .toc-heading2 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            margin-top: 8px;
+        }
+       
+
+        
+        /* Hamburger menu for screens below 992px */
+        @media (max-width: 992px) {
+            .hamburger-menu {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 11;
+                color: #fff;
+                background: #20419B;
+                border-radius: 3px;
+                font-size: 1.3rem;
+                margin: 0;
+                padding: 10px;
+            }
+
+            .headings-container {
+                position: fixed;
+                left: -280px;
+                top: 0;
+                width: 280px;
+                height: 100%;
+                z-index: 9;
+                padding-top: 60px;
+                background-color: #ffffff;
+                transition: left 0.3s ease;
+               padding-bottom: 80px;
+            }
+
+            .headings-container.show {
+                left: 0;
+            }
+
+            .overlay {
+                display: none;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 8;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+
+            .overlay.show {
+                display: block;
+            }
+            .bottom-card {
+                text-align: center;
+            }
+
+            #historyLink {
+                display: block;
+                margin: 10px 10px;
+            }
+
+            #downloadButton {
+             display: block; 
+             margin: 10px auto; 
+             width: fit-content; 
+            }
+        }
+
+
+        /* Larger screens */
+        @media (min-width: 993px) {
+            .bottom-card .btn {
+                display: inline-block;
+            }
+
+            #historyLink {
+                display: inline-block;
+                margin-left: 20px;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+
+
+<body data-bs-spy="scroll" data-bs-target="#headingsContainer" data-bs-offset="0" tabindex="0">
+    <div class="overlay"></div>
+    <section class="container-fluid main">
+        <div class="row">
+            <div class="col-sm-12 p-2">
+                <div class="d-flex flex-column flex-sm-row">
+                    <div class="flex-grow-1 p-2">
+                        <div id="headingsContainer" class="list-group headings-container ms-0 ps-3">
+                            <div class="toc-heading ">Table of Contents</div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div id="contentContainer" class="content-container pb-2">
+                            <div class="d-flex justify-content-between">
+                                <div class="toc-heading2">
+                                    <button class="hamburger-menu d-block d-sm-none" title="menu-icon">
+                                        <i class="fa fa-bars"></i>
+                                    </button>
+                                    User Manual
+                                </div>
+                                <div id="darkModeToggle" class="btn btn-link">
+                                    <i id="darkModeIcon" class="fa fa-moon-o moon-color" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bottom-card">
+                    <div class="col-sm-12 text-center mt-3">
+                        <button id="downloadButton" class="btn btn-primary download-button">Download Your HTML
+                            Handbook</button>
+                        <a href="history.html" id="historyLink" class="ms-5 link">View Your Upload History</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const headings = JSON.parse(localStorage.getItem('documentHeadings'));
+          const headingsContainer = document.getElementById('headingsContainer');
+          const contentContainer = document.getElementById('contentContainer');
+          const downloadButton = document.getElementById('downloadButton');
+          const historyLink = document.getElementById('historyLink');
+      
+          function createHeadingLink(heading, headingId, level) {
+              const headingLink = document.createElement('a');
+              headingLink.href = `#${headingId}`;
+              headingLink.className = 'list-group-item list-group-item-action';
+              headingLink.innerText = heading.text;
+              headingLink.id = `link-${headingId}`;
+              headingLink.style.paddingLeft = `${level *100}px`; // Adjust indentation level
+              headingLink.addEventListener('click', function (event) {
+                  event.preventDefault();
+                  const targetHeading = document.getElementById(headingId);
+                  window.scrollTo({
+                      top: targetHeading.getBoundingClientRect().top + window.scrollY,
+                      behavior: 'smooth'
+                  });
+                  document.querySelector('.overlay').click(); // Close the menu on click
+              });
+              return headingLink;
+          }
+      
+          function appendHeadingsToContainer(headings, container, level = 0) {
+              const ol = document.createElement('ol');
+              ol.className = 'list-unstyled'; // Removes default list styling
+      
+              headings.forEach((heading, index) => {
+                  const li = document.createElement('li');
+                  li.className = 'mb-1'; // Adds margin-bottom for spacing
+      
+                  const headingId = `heading-${level}-${index}`;
+                  const headingLink = createHeadingLink(heading, headingId, level);
+                  li.appendChild(headingLink);
+      
+                  const contentSection = document.createElement('div');
+                  contentSection.id = headingId;
+                  contentSection.className = 'content-section';
+                  contentSection.innerHTML = `
+                      <div class="sticky-heading">${heading.content}</div>
+                      ${heading.relatedContent}
+                  `;
+                  contentContainer.appendChild(contentSection);
+      
+                  if (heading.children && heading.children.length > 0) {
+                      appendHeadingsToContainer(heading.children, li, level + 1);
+                  }
+      
+                  ol.appendChild(li);
+              });
+      
+              container.appendChild(ol);
+          }
+      
+          if (headings && headings.length > 0) {
+              appendHeadingsToContainer(headings, headingsContainer);
+          }
+      
+          const hamburgerMenu = document.querySelector('.hamburger-menu');
+          const overlay = document.querySelector('.overlay');
+          const headingsContainerElement = document.querySelector('.headings-container');
+      
+          hamburgerMenu.addEventListener('click', function () {
+              headingsContainerElement.classList.toggle('show');
+              overlay.classList.toggle('show');
+          });
+      
+          overlay.addEventListener('click', function () {
+              headingsContainerElement.classList.remove('show');
+              overlay.classList.remove('show');
+          });
+      
+          const darkModeToggle = document.getElementById('darkModeToggle');
+          const darkModeIcon = document.getElementById('darkModeIcon');
+          const darkModeClass = 'dark-mode';
+          const bodyElement = document.body;
+      
+          darkModeToggle.addEventListener('click', function () {
+              bodyElement.classList.toggle(darkModeClass);
+              const isDarkMode = bodyElement.classList.contains(darkModeClass);
+              darkModeIcon.classList.toggle('fa-moon-o', !isDarkMode);
+              darkModeIcon.classList.toggle('fa-sun-o', isDarkMode);
+              localStorage.setItem('darkMode', isDarkMode);
+          });
+      
+          const isDarkModeEnabled = localStorage.getItem('darkMode') === 'true';
+          if (isDarkModeEnabled) {
+              bodyElement.classList.add(darkModeClass);
+              darkModeIcon.classList.remove('fa-moon-o');
+              darkModeIcon.classList.add('fa-sun-o');
+          }
+      
+          // Handle Download Button Click
+          document.getElementById('downloadButton').addEventListener('click', function () {
+              // Temporarily hide the buttons
+              downloadButton.style.display = 'none';
+              historyLink.style.display = 'none';
+      
+              // Serialize the HTML content of the page
+              const pageContent = document.documentElement.outerHTML;
+      
+              // Restore the buttons after capturing the HTML
+              downloadButton.style.display = '';
+              historyLink.style.display = '';
+      
+              // Create a blob with the page content
+              const blob = new Blob([pageContent], { type: 'text/html' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'HTML_Handbook.html';
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+      
+              // Update upload and download history in localStorage
+              const downloadHistory = JSON.parse(localStorage.getItem('downloadHistory') || '[]');
+              downloadHistory.push({
+                  fileName: 'HTML_Handbook.html',
+                  dateTime: new Date().toLocaleString()
+              });
+              localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
+          });
+      });
+      </script>
+      
+</body>
+
+</html>  
+
+
